@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
 import Background from "@/assets/bg.png";
+import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import { ReactLenis } from "@/utils/lenis";
 
 const poppins = Poppins({
   weight: ["400", "500", "600", "700", "800"],
   variable: "--font-poppins",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
