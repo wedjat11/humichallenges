@@ -1,4 +1,11 @@
 "use client";
+
+interface SearchComponentProps {
+  searchTerm: string;
+  setSearchTerm: (val: string) => void;
+  position: string;
+  setPosition: (val: string) => void;
+}
 import {
   Select,
   SelectContent,
@@ -42,12 +49,7 @@ export default function SearchComponent({
   setSearchTerm,
   position,
   setPosition,
-}: {
-  searchTerm: string;
-  setSearchTerm: (val: string) => void;
-  position: string;
-  setPosition: (val: string) => void;
-}) {
+}: SearchComponentProps) {
   return (
     <section className="flex flex-col gap-4 w-full items-center justify-center">
       <div className="w-full flex flex-col gap-3 lg:flex-row lg:w-fit">
