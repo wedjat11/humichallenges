@@ -3,6 +3,24 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 
+import localFont from "next/font/local";
+
+const myFont = localFont({
+  src: [
+    {
+      path: "../../public/font/youregone.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/font/youregoneit.otf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--my-font",
+});
+
 const poppins = Poppins({
   weight: ["400", "500", "600", "700", "800"],
   variable: "--font-poppins",
@@ -22,7 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.variable} antialiased`}
+        className={`${poppins.variable} ${myFont.variable} antialiased`}
         style={{
           backgroundImage: `url(${Background.src})`,
           backgroundSize: "cover",

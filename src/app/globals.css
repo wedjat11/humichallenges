@@ -10,6 +10,8 @@
 }
 
 @theme inline {
+  --font-poppins: var(--font-poppins), sans-serif;
+  --font-my: var(--my-font), sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
