@@ -1,4 +1,3 @@
-import Background from "@/assets/bg.png";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
@@ -40,14 +39,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.variable} ${myFont.variable} antialiased`}
-        style={{
-          backgroundImage: `url(${Background.src})`,
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-          backgroundAttachment: "fixed",
-          backgroundPosition: "center",
-        }}
+        className={`${poppins.variable} ${myFont.variable} antialiased bg-black`}
       >
         {children}
       </body>
