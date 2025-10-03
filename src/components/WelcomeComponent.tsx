@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import useRandomSplash from "@/utils/useRandomSplash";
 import Image from "next/image";
 import Logo from "@/assets/logo.png";
-import { Button } from "./button";
+import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
 
 const GridLoader = dynamic(
@@ -52,7 +52,7 @@ export default function WelcomeComponent() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.6, ease: "easeOut" }}
               >
-                Discover a new level of{" "}
+                Discover a new level of
                 <span className="font-my">challenges</span>
               </motion.h1>
               <Button onClick={() => router.push("/challenges")}>Start</Button>

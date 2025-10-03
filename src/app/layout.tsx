@@ -1,9 +1,10 @@
-import Background from "@/assets/bg.png";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import Logo from "@/assets/logo-cha.png";
 
 import localFont from "next/font/local";
+import Image from "next/image";
 
 const myFont = localFont({
   src: [
@@ -40,15 +41,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.variable} ${myFont.variable} antialiased`}
-        style={{
-          backgroundImage: `url(${Background.src})`,
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-          backgroundAttachment: "fixed",
-          backgroundPosition: "center",
-        }}
+        className={`${poppins.variable} ${myFont.variable} antialiased bg-[#100E0E] text-white`}
       >
+        <Image src={Logo} alt="Logo" width={45} height={45} className="mx-4" />
         {children}
       </body>
     </html>

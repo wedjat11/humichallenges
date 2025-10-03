@@ -7,6 +7,8 @@ import SearchComponent from "@/components/ui/SearchComponent";
 import useFetchChampions from "@/utils/useFetchChampions";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 
 type Challenge = {
   name: string;
@@ -32,7 +34,7 @@ export default function IndividualChallenge() {
       position === "all" || position === ""
         ? true
         : champ.tags?.some(
-            (tag: string) => tag.toLowerCase() === position.toLowerCase()
+            (tag: string) => tag === position
           );
 
     return matchesSearch && matchesPosition;
@@ -94,44 +96,69 @@ export default function IndividualChallenge() {
   };
 
   return (
-    <section>
-      <h1 className="text-3xl text-center font-bold">{challenge.name}</h1>
-      <p className="text-center">{challenge.description}</p>
-      <div className="w-10/12 flex flex-col gap-4  justify-center mx-auto">
-        <h2 className="text-xl font-bold">
-          Champions used:
-          <span className="text-purple-800">
-            {challenge.champions.length}/{numberOfChampions}
-          </span>
-        </h2>
-        <ul className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 place-items-center gap-2">
-          {challenge.champions.length > 0 ? (
-            challenge.champions.map((champion, i) => (
-              <ChampionName
-                key={i}
-                name={champion}
-                onDelete={() => handleDeleteChampion(champion)}
-              />
-            ))
-          ) : (
-            <li>No champions added yet</li>
-          )}
-        </ul>
-      </div>
-      <div className="flex flex-col gap-4 w-full">
-        <TitleComponent title="Add Champions" />
-        <SearchComponent
-          searchTerm={searchTerm}
-          setSearchTerm={setSearchTerm}
-          position={position}
-          setPosition={setPosition}
-        />
+    <section className="min-h-screen bg-gradient-to-b from-gray-900 via-purple-950 to-gray-900 text-white pb-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
+        <Link 
+          href="/challenges" 
+          className="inline-flex items-center gap-2 text-purple-300 hover:text-white transition-colors mb-8 group"
+        >
+          <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+          <span className="font-medium">Back to Challenges</span>
+        </Link>
 
-        <ChampionGridComponent
-          champions={filteredChampions}
-          onclick={handleAddChampion}
-          sepia={handleSepia}
-        />
+        <div className="text-center mb-12 space-y-4">
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 animate-gradient-x">
+            {challenge.name}
+          </h1>
+          <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
+            {challenge.description}
+          </p>
+        </div>
+
+        <div className="bg-white/5 backdrop-blur-md rounded-2xl p-6 md:p-8 border border-white/10 shadow-xl mb-12">
+          <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4 border-b border-white/10 pb-4">
+            <h2 className="text-2xl font-bold flex items-center gap-2">
+              Selected Champions
+              <span className="bg-purple-600/80 px-3 py-1 rounded-full text-sm font-mono">
+                {challenge.champions.length}/{numberOfChampions}
+              </span>
+            </h2>
+          </div>
+          
+          <ul className="flex flex-wrap gap-3 justify-center min-h-[100px] items-center bg-black/20 rounded-xl p-4">
+            {challenge.champions.length > 0 ? (
+              challenge.champions.map((champion, i) => (
+                <ChampionName
+                  key={i}
+                  name={champion}
+                  onDelete={() => handleDeleteChampion(champion)}
+                />
+              ))
+            ) : (
+              <li className="text-gray-400 italic">No champions added yet. Start building your team!</li>
+            )}
+          </ul>
+        </div>
+
+        <div className="space-y-8">
+          <div className="flex flex-col gap-6 w-full max-w-4xl mx-auto">
+            <TitleComponent title="Add Champions" />
+            <SearchComponent
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+              position={position}
+              setPosition={setPosition}
+            />
+          </div>
+
+          <div className="mt-8">
+            <ChampionGridComponent
+              champions={filteredChampions}
+              onclick={handleAddChampion}
+              sepia={handleSepia}
+            />
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -8,12 +8,15 @@ export default function ChampionName({
   onDelete: () => void;
 }) {
   return (
-    <section className="flex gap-3 items-center justify-center">
-      <h1 className="text-2xl font-bold">{name}</h1>
-      <DeleteIcon
-        className="size-4 mt-2 cursor-pointer hover:text-red-500 transition-all duration-300 my-auto"
+    <li className="group flex items-center gap-2 bg-purple-900/40 border border-purple-500/30 rounded-full px-4 py-2 hover:bg-purple-800/60 transition-all duration-300 backdrop-blur-sm">
+      <span className="text-white font-medium text-sm sm:text-base">{name}</span>
+      <button
         onClick={onDelete}
-      />
-    </section>
+        className="text-purple-300 hover:text-red-400 transition-colors p-1 rounded-full hover:bg-white/10"
+        aria-label={`Remove ${name}`}
+      >
+        <DeleteIcon className="w-4 h-4" />
+      </button>
+    </li>
   );
 }

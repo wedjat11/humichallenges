@@ -1,7 +1,10 @@
 "use client";
 
 import ActiveChallenge from "@/components/challenges/ActiveChallenge";
-import GuideUser from "@/components/challenges/GuideUser";
+import MainComponent from "@/components/challenges/MainComponent";
+import GuideUser from "@/components/challenges/MainComponent";
+import MainComponent from "@/components/challenges/MainComponent";
+import GuideUser from "@/components/challenges/MainComponent";
 import CreateChallengeModal from "@/components/modals/CreateChallengeModal";
 import TitleComponent from "@/components/TitleComponent";
 import Lenis from "lenis";
@@ -51,9 +54,19 @@ export default function Challenges() {
 
   return (
     <section className="flex flex-col w-full lg:w-10/12 gap-6 mx-auto">
-      <TitleComponent title="HumiChallenges" />
-      <ActiveChallenge challenges={activeChallenges} />
-      <GuideUser
+      {/* <ActiveChallenge challenges={activeChallenges} /> */}
+      <MainComponent
+        onClick={handleCreateChallenge}
+        haveChallenges={haveChallenges}
+      />
+      <CreateChallengeModal
+        open={newChallenge}
+        close={() => setNewChallenge(false)}
+      />
+    </section>
+    <section className="flex flex-col w-full lg:w-10/12 gap-6 mx-auto">
+      {/* <ActiveChallenge challenges={activeChallenges} /> */}
+      <MainComponent
         onClick={handleCreateChallenge}
         haveChallenges={haveChallenges}
       />

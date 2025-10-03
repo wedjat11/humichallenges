@@ -20,19 +20,15 @@ export default function ChampionGridComponent({
   onclick?: (name: string) => void;
   sepia?: (name: string) => boolean;
 }) {
-  function getRandomInt(max: number) {
-    return Math.floor(Math.random() * max);
-  }
-
   return (
-    <section className="p-4">
-      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 place-items-center gap-2 ">
+    <section className="w-full">
+      <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6 p-4">
         {champions.map((champ) => (
           <ChampionCard
             key={champ.id}
             splashart={`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${
               champ.id
-            }_${getRandomInt(2)}.jpg`}
+            }_${champ.id.charCodeAt(0) % 2}.jpg`}
             name={champ.name}
             onClick={() => onclick?.(champ.name)}
             className={sepia && sepia(champ.name) ? "sepia" : ""}

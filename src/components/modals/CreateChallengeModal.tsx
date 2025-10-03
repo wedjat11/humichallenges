@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Input } from "../ui/input";
 import { AnimatePresence, motion } from "framer-motion";
+import CloseButton from "../CloseButton";
 
 export default function CreateChallengeModal({
   open,
@@ -44,12 +45,13 @@ export default function CreateChallengeModal({
           exit={{ opacity: 0 }}
         >
           <motion.div
-            className="bg-white rounded-md p-6 w-full max-w-lg"
+            className="bg-black relative rounded-md p-10 w-full max-w-lg border border-white"
             initial={{ scale: 0.8, opacity: 0, y: 50 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.8, opacity: 0, y: 50 }}
             transition={{ duration: 0.3 }}
           >
+            <CloseButton onClick={close} />
             <Input
               placeholder="Challenge name"
               value={nameChallenge}
