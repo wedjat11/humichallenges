@@ -1,4 +1,4 @@
-import WelcomeComponent from "@/components/ui/WelcomeComponent";
+import WelcomeComponent from "@/components/WelcomeComponent";
 
 export default function Home() {
   return <WelcomeComponent />;

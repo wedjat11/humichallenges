@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import useRandomSplash from "@/utils/useRandomSplash";
 import Image from "next/image";
 import Logo from "@/assets/logo.png";
-import { Button } from "./button";
+import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
 
 const GridLoader = dynamic(

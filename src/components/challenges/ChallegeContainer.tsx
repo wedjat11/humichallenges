@@ -1,7 +1,8 @@
 import { useState } from "react";
 import TitleComponent from "../TitleComponent";
-import SearchComponent from "../ui/SearchComponent";
+
 import ChampionGridComponent from "./ChampionGridComponent";
+import SearchComponent from "../SearchComponent";
 
 export default function ChallegeContainer() {
   const [searchTerm, setSearchTerm] = useState("");

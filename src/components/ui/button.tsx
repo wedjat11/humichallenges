@@ -4,18 +4,17 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center cursor-pointer justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+  "inline-flex items-center cursor-pointer justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive duration-200",
   {
     variants: {
       variant: {
-        default:
-          "bg-indigo-600 text-white shadow-xs hover:bg-indigo-800 hover:shadow-[0_0_12px_rgba(46,78,101,0.6)]",
+        default: "bg-indigo-600 text-white shadow-xs hover:bg-indigo-700 ",
 
         destructive:
           "bg-[#E8B21A] text-black shadow-xs hover:bg-[#c79815] hover:shadow-[0_0_12px_rgba(232,178,26,0.6)] focus-visible:ring-[#E8B21A]/30",
 
         outline:
-          "border border-[#B0B8C1] bg-transparent text-[#B0B8C1] shadow-xs hover:bg-[#2E4E65] hover:text-white hover:shadow-[0_0_12px_rgba(176,184,193,0.5)]",
+          "border border-red-500 bg-transparent text-red-500 shadow-xs hover:border-white hover:text-white hover:shadow-[0_0_12px_rgba(176,184,193,0.5)]",
 
         secondary:
           "bg-[#2E4E65] text-white shadow-xs hover:bg-[#1D3242] hover:shadow-[0_0_12px_rgba(29,50,66,0.6)]",

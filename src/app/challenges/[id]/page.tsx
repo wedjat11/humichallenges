@@ -2,8 +2,8 @@
 
 import ChampionGridComponent from "@/components/challenges/ChampionGridComponent";
 import ChampionName from "@/components/challenges/ChampionName";
+import SearchComponent from "@/components/SearchComponent";
 import TitleComponent from "@/components/TitleComponent";
-import SearchComponent from "@/components/ui/SearchComponent";
 import useFetchChampions from "@/utils/useFetchChampions";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";

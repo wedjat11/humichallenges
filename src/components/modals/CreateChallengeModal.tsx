@@ -47,7 +47,7 @@ export default function CreateChallengeModal({
           exit={{ opacity: 0 }}
         >
           <motion.div
-            className="bg-black rounded-md relative p-6 w-full max-w-[420px] min-h-[350px] flex flex-col gap-7 border items-center justify-center border-white"
+            className="bg-black rounded-lg relative p-6 w-full max-w-[420px] min-h-[350px] flex flex-col gap-7 border items-center justify-center border-white/40"
             initial={{ scale: 0.8, opacity: 0, y: 50 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.8, opacity: 0, y: 50 }}
@@ -58,14 +58,14 @@ export default function CreateChallengeModal({
                 <Image src={CloseIcon} alt="Close" width={24} height={24} />
               </button>
             </div>
-            <h1 className="text-4xl font-bold text-white">
+            <h1 className="text-3xl pt-3 font-semibold text-white">
               Add a new challenge
             </h1>
             <div className="flex flex-col gap-4 w-full">
               <div className="flex flex-col gap-1">
                 <label className="text-white text-sm">Name</label>
                 <Input
-                  className="bg-white/40 text-sm placeholder-white"
+                  className="bg-[#666666] text-sm  "
                   placeholder="Challenge name"
                   value={nameChallenge}
                   onChange={(e) => setNameChallenge(e.target.value)}
@@ -88,7 +88,7 @@ export default function CreateChallengeModal({
               </Button> */}
               <Button
                 onClick={handleClick}
-                className="px-4 py-2 bg-indigo-600 text-white rounded"
+                className=" bg-indigo-600 text-white rounded-[6px]"
               >
                 Continue
               </Button>

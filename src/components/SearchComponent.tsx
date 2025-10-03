@@ -15,7 +15,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Input } from "./input";
+import { Input } from "./ui/input";
 
 function SelectNew({
   value,

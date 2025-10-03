@@ -1,17 +1,19 @@
 import { useRouter } from "next/navigation";
-import { Button } from "../ui/button";
+import ChallengeCard from "./ChallengeCard";
 
 type Challenge = {
   name: string;
   description: string;
   champions: string[];
 };
-
+interface ActiveChallengeProps {
+  challenges: Challenge[];
+  onDelete: (index: number) => void;
+}
 export default function ActiveChallenge({
   challenges,
-}: {
-  challenges: Challenge[];
-}) {
+  onDelete,
+}: ActiveChallengeProps) {
   const router = useRouter();
 
   const goToChallenge = (index: number) => {
@@ -19,19 +21,20 @@ export default function ActiveChallenge({
   };
 
   return (
-    <section>
-      {challenges.length > 0 ? (
-        challenges.map((challenge, index) => (
-          <div key={index} className="p-2 border-b flex gap-6">
-            <h3 className="font-bold">{challenge.name}</h3>
-            <p>{challenge.description}</p>
-            <Button onClick={() => goToChallenge(index)}>Add champions</Button>
-            <Button>Delete</Button>
-          </div>
-        ))
-      ) : (
-        <p>No hay challenges activos</p>
-      )}
+    <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 w-full">
+      {challenges.length > 0
+        ? challenges.map((challenge, index) => (
+            <ChallengeCard
+              key={index}
+              id={index}
+              title={challenge.name}
+              desc={challenge.description}
+              onClick={() => goToChallenge(index)}
+              onDelete={() => onDelete(index)}
+            />
+          ))
+        : null}
+      <div>agrega mas</div>
     </section>
   );
 }

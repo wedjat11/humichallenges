@@ -1,14 +1,15 @@
 "use client";
 
+import Logo from "@/assets/logo.png";
 import ActiveChallenge from "@/components/challenges/ActiveChallenge";
-import GuideUser from "@/components/challenges/GuideUser";
+import MainComponent from "@/components/challenges/MainComponent";
 import CreateChallengeModal from "@/components/modals/CreateChallengeModal";
-import TitleComponent from "@/components/TitleComponent";
 import useRandomSplash from "@/utils/useRandomSplash";
+import { motion } from "framer-motion";
 import Lenis from "lenis";
 import "lenis/dist/lenis.css";
+import Image from "next/image";
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 
 type Challenge = {
   name: string;
@@ -37,6 +38,13 @@ export default function Challenges() {
     }
   }, []);
 
+  const handleDeleteChallenge = (index: number) => {
+    const updatedChallenges = activeChallenges.filter((_, i) => i !== index);
+    setActiveChallenges(updatedChallenges);
+    localStorage.setItem("challenges", JSON.stringify(updatedChallenges));
+    setHaveChallenges(updatedChallenges.length > 0);
+  };
+
   useEffect(() => {
     const lenis = new Lenis();
 
@@ -62,10 +70,20 @@ export default function Challenges() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
     >
-      <section className="flex flex-col w-full h-full bg-black/85 gap-6 mx-auto">
-        <TitleComponent title="HumiChallenges" />
-        <ActiveChallenge challenges={activeChallenges} />
-        <GuideUser
+      <section className="flex flex-col w-full relative bg-black/90 gap-6 mx-auto h-screen items-center justify-center">
+        <ActiveChallenge
+          challenges={activeChallenges}
+          onDelete={handleDeleteChallenge}
+        />
+
+        <Image
+          src={Logo}
+          alt="Logo"
+          width={45}
+          height={45}
+          className="absolute top-4 left-4"
+        />
+        <MainComponent
           onClick={handleCreateChallenge}
           haveChallenges={haveChallenges}
         />
