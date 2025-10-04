@@ -7,6 +7,10 @@ import TitleComponent from "@/components/TitleComponent";
 import useFetchChampions from "@/utils/useFetchChampions";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import IndividualChampion from "@/components/challenges/IndividualChampion";
+import Logo from "@/assets/logo.png";
+import Image from "next/image";
 
 type Challenge = {
   name: string;
@@ -22,6 +26,8 @@ export default function IndividualChallenge() {
   const [challenge, setChallenge] = useState<Challenge | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [position, setPosition] = useState("");
+
+  const router = useRouter();
 
   const filteredChampions = champions.filter((champ) => {
     const matchesSearch = champ.name
@@ -94,20 +100,31 @@ export default function IndividualChallenge() {
   };
 
   return (
-    <section>
-      <h1 className="text-3xl text-center font-bold">{challenge.name}</h1>
-      <p className="text-center">{challenge.description}</p>
-      <div className="w-10/12 flex flex-col gap-4  justify-center mx-auto">
-        <h2 className="text-xl font-bold">
-          Champions used:
-          <span className="text-purple-800">
-            {challenge.champions.length}/{numberOfChampions}
-          </span>
-        </h2>
-        <ul className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 place-items-center gap-2">
+    <section className="p-6 w-full text-white gap-10 flex flex-col relative ">
+      <div className="absolute top-4 left-4">
+        <Image src={Logo} alt="Logo" width={45} height={45} className="pb-10" />
+      </div>
+      <div className="flex flex-col w-full mt-15">
+        <div className="flex justify-between items-center w-full">
+          <h1 className="text-3xl font-bold ">{challenge.name}</h1>
+          <p onClick={router.back}> goback</p>
+        </div>
+        <p className="text-white/40 text-[20px] font-semibold ">
+          {challenge.description}
+        </p>
+      </div>
+
+      <div className="w-full flex justify-between">
+        <h2 className="text-3xl font-bold">Champions used:</h2>
+        <p className="text-white/40 text-3xl font-semibold">
+          {challenge.champions.length}/{numberOfChampions}
+        </p>
+      </div>
+      <div className="w-full flex flex-col  ">
+        <ul className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-10 place-items-center">
           {challenge.champions.length > 0 ? (
             challenge.champions.map((champion, i) => (
-              <ChampionName
+              <IndividualChampion
                 key={i}
                 name={champion}
                 onDelete={() => handleDeleteChampion(champion)}

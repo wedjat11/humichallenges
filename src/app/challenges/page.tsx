@@ -70,7 +70,7 @@ export default function Challenges() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
     >
-      <section className="flex flex-col w-full relative bg-black/90 gap-6 mx-auto h-screen items-center justify-center">
+      <section className="flex p-4 flex-col w-full relative bg-black/90 gap-6 mx-auto h-screen items-center justify-center">
         <ActiveChallenge
           challenges={activeChallenges}
           onDelete={handleDeleteChallenge}

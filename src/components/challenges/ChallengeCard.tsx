@@ -17,7 +17,7 @@ export default function ChallengeCard({
 }: ChampionCardProps) {
   return (
     <section
-      className="bg-[#100E0E] flex flex-col gap-2 text-white  p-5 rounded-md min-w-[200px]"
+      className="bg-[#100E0E] flex flex-col gap-2 text-white  p-5 rounded-md min-w-[200px] max-w-[300px] "
       key={id}
     >
       <div className="flex flex-col items-start">

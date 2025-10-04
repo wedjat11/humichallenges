@@ -26,7 +26,7 @@ function SelectNew({
 }) {
   return (
     <Select value={value} onValueChange={onChange}>
-      <SelectTrigger className="w-[180px]">
+      <SelectTrigger className="w-[145px]">
         <SelectValue placeholder="Select a position" />
       </SelectTrigger>
       <SelectContent>
@@ -57,7 +57,9 @@ export default function SearchComponent({
           placeholder="Search"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
+          className="w-[145px] h-9 text-white/40"
         />
+        <p className="text-white/40">or </p>
         <SelectNew value={position} onChange={setPosition} />
       </div>
     </section>
