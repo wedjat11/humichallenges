@@ -34,6 +34,7 @@ export const metadata: Metadata = {
 
 import Navbar from "@/components/Navbar";
 import ConditionalWrapper from "@/components/ConditionalWrapper";
+import Footer from "@/components/Footer";
 
 export default function RootLayout({
   children,
@@ -43,12 +44,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.variable} ${myFont.variable} antialiased bg-[#100E0E] text-white`}
+        className={`${poppins.variable} ${myFont.variable} antialiased bg-[#100E0E] text-white flex flex-col min-h-screen`}
       >
         <Navbar />
         <ConditionalWrapper>
           {children}
         </ConditionalWrapper>
+        <Footer />
       </body>
     </html>
   );
