@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Input } from "./input";
+import { Input } from "@/components/ui/input";
 
 interface SearchComponentProps {
   searchTerm: string;

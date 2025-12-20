@@ -7,7 +7,6 @@ import TitleComponent from "@/components/TitleComponent";
 import Lenis from "lenis";
 import "lenis/dist/lenis.css";
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 
 type Challenge = {
   name: string;
@@ -35,6 +34,13 @@ export default function Challenges() {
     }
   }, []);
 
+  const handleDeleteChallenge = (index: number) => {
+    const updatedChallenges = activeChallenges.filter((_, i) => i !== index);
+    setActiveChallenges(updatedChallenges);
+    localStorage.setItem("challenges", JSON.stringify(updatedChallenges));
+    setHaveChallenges(updatedChallenges.length > 0);
+  };
+
   useEffect(() => {
     const lenis = new Lenis();
 
@@ -60,7 +66,10 @@ export default function Challenges() {
           </p>
         </div>
         
-        <ActiveChallenge challenges={activeChallenges} />
+        <ActiveChallenge 
+          challenges={activeChallenges} 
+          onDelete={handleDeleteChallenge}
+        />
         
         <div className="mt-8 border-t border-white/10 pt-8">
           <GuideUser

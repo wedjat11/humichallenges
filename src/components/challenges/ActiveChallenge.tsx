@@ -6,12 +6,14 @@ type Challenge = {
   description: string;
   champions: string[];
 };
-
+interface ActiveChallengeProps {
+  challenges: Challenge[];
+  onDelete?: (index: number) => void;
+}
 export default function ActiveChallenge({
   challenges,
-}: {
-  challenges: Challenge[];
-}) {
+  onDelete,
+}: ActiveChallengeProps) {
   const router = useRouter();
 
   const goToChallenge = (index: number) => {
@@ -41,12 +43,15 @@ export default function ActiveChallenge({
               >
                 View
               </Button>
-              <Button
-                variant="destructive"
-                className="bg-red-500/20 text-red-300 hover:bg-red-500/40 border border-red-500/30"
-              >
-                Delete
-              </Button>
+              {onDelete && (
+                <Button
+                  variant="destructive"
+                  onClick={() => onDelete(index)}
+                  className="bg-red-500/20 text-red-300 hover:bg-red-500/40 border border-red-500/30"
+                >
+                  Delete
+                </Button>
+              )}
             </div>
           </div>
         ))

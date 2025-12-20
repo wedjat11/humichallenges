@@ -43,7 +43,6 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} ${myFont.variable} antialiased bg-[#100E0E] text-white`}
       >
-        <Image src={Logo} alt="Logo" width={45} height={45} className="mx-4" />
         {children}
       </body>
     </html>
