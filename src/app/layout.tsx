@@ -32,6 +32,9 @@ export const metadata: Metadata = {
   description: "Track your LoL challenges",
 };
 
+import Navbar from "@/components/Navbar";
+import ConditionalWrapper from "@/components/ConditionalWrapper";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -42,7 +45,10 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} ${myFont.variable} antialiased bg-[#100E0E] text-white`}
       >
-        {children}
+        <Navbar />
+        <ConditionalWrapper>
+          {children}
+        </ConditionalWrapper>
       </body>
     </html>
   );
