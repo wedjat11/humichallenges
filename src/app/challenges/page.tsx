@@ -1,15 +1,13 @@
 "use client";
 
 import ActiveChallenge from "@/components/challenges/ActiveChallenge";
-import MainComponent from "@/components/challenges/MainComponent";
-import GuideUser from "@/components/challenges/MainComponent";
-import MainComponent from "@/components/challenges/MainComponent";
-import GuideUser from "@/components/challenges/MainComponent";
+import GuideUser from "../../components/challenges/GuideUser";
 import CreateChallengeModal from "@/components/modals/CreateChallengeModal";
 import TitleComponent from "@/components/TitleComponent";
 import Lenis from "lenis";
 import "lenis/dist/lenis.css";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 type Challenge = {
   name: string;
@@ -53,27 +51,29 @@ export default function Challenges() {
   };
 
   return (
-    <section className="flex flex-col w-full lg:w-10/12 gap-6 mx-auto">
-      {/* <ActiveChallenge challenges={activeChallenges} /> */}
-      <MainComponent
-        onClick={handleCreateChallenge}
-        haveChallenges={haveChallenges}
-      />
-      <CreateChallengeModal
-        open={newChallenge}
-        close={() => setNewChallenge(false)}
-      />
-    </section>
-    <section className="flex flex-col w-full lg:w-10/12 gap-6 mx-auto">
-      {/* <ActiveChallenge challenges={activeChallenges} /> */}
-      <MainComponent
-        onClick={handleCreateChallenge}
-        haveChallenges={haveChallenges}
-      />
-      <CreateChallengeModal
-        open={newChallenge}
-        close={() => setNewChallenge(false)}
-      />
+    <section className="flex flex-col w-full h-full bg-black/85 gap-8 mx-auto overflow-y-auto">
+      <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-12 flex flex-col gap-8">
+        <div className="text-center space-y-4">
+          <TitleComponent title="HumiChallenges" />
+          <p className="text-gray-300 max-w-2xl mx-auto text-lg">
+            Create and manage your custom League of Legends challenges. Build your dream team and track your progress.
+          </p>
+        </div>
+        
+        <ActiveChallenge challenges={activeChallenges} />
+        
+        <div className="mt-8 border-t border-white/10 pt-8">
+          <GuideUser
+            onClick={handleCreateChallenge}
+            haveChallenges={haveChallenges}
+          />
+        </div>
+        
+        <CreateChallengeModal
+          open={newChallenge}
+          close={() => setNewChallenge(false)}
+        />
+      </div>
     </section>
   );
 }
