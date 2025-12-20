@@ -25,3 +25,4 @@ export default function GuideUser({ onClick, haveChallenges }: GuideUserProps) {
     </section>
   );
 }
+

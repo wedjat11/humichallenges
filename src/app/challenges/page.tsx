@@ -1,7 +1,7 @@
 "use client";
 
 import ActiveChallenge from "@/components/challenges/ActiveChallenge";
-import GuideUser from "../../components/challenges/GuideUser";
+import GuideUser from "@/components/challenges/GuideUser";
 import CreateChallengeModal from "@/components/modals/CreateChallengeModal";
 import TitleComponent from "@/components/TitleComponent";
 import Lenis from "lenis";
