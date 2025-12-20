@@ -8,6 +8,8 @@ import Lenis from "lenis";
 import "lenis/dist/lenis.css";
 import { useEffect, useState } from "react";
 
+import useFetchChampions from "@/utils/useFetchChampions";
+
 type Challenge = {
   name: string;
   description: string;
@@ -18,6 +20,8 @@ export default function Challenges() {
   const [newChallenge, setNewChallenge] = useState(false);
   const [haveChallenges, setHaveChallenges] = useState(false);
   const [activeChallenges, setActiveChallenges] = useState<Challenge[]>([]);
+  const { champions } = useFetchChampions();
+  const totalChampions = champions.length;
 
   useEffect(() => {
     const stored = localStorage.getItem("challenges");
@@ -69,6 +73,7 @@ export default function Challenges() {
         <ActiveChallenge 
           challenges={activeChallenges} 
           onDelete={handleDeleteChallenge}
+          totalChampions={totalChampions}
         />
         
         <div className="mt-8 border-t border-white/10 pt-8">

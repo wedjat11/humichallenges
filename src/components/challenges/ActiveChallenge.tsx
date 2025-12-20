@@ -9,10 +9,13 @@ type Challenge = {
 interface ActiveChallengeProps {
   challenges: Challenge[];
   onDelete?: (index: number) => void;
+  totalChampions: number;
 }
+
 export default function ActiveChallenge({
   challenges,
   onDelete,
+  totalChampions,
 }: ActiveChallengeProps) {
   const router = useRouter();
 
@@ -29,9 +32,14 @@ export default function ActiveChallenge({
             className="group p-6 bg-white/5 backdrop-blur-md border border-white/10 rounded-xl flex flex-col sm:flex-row gap-4 sm:items-center justify-between hover:bg-white/10 transition-all duration-300 shadow-lg hover:shadow-purple-500/10"
           >
             <div className="flex-1 space-y-2">
-              <h3 className="text-xl font-bold text-white group-hover:text-purple-300 transition-colors">
-                {challenge.name}
-              </h3>
+              <div className="flex items-center gap-3">
+                <h3 className="text-xl font-bold text-white group-hover:text-purple-300 transition-colors">
+                  {challenge.name}
+                </h3>
+                <span className="bg-purple-600/20 text-purple-300 border border-purple-500/30 px-2 py-0.5 rounded-full text-xs font-mono">
+                  {challenge.champions.length}/{totalChampions}
+                </span>
+              </div>
               <p className="text-gray-400 text-sm line-clamp-2">
                 {challenge.description}
               </p>
