@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import Logo from "@/assets/logo-cha.png";
+import "./globals.css";
 
 import localFont from "next/font/local";
-import Image from "next/image";
 
 const myFont = localFont({
   src: [

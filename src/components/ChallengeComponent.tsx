@@ -1,4 +1,4 @@
-import { Input } from "./input";
+import { Input } from "@/components/ui/input";
 
 export default function ChallengeComponent() {
   return (
