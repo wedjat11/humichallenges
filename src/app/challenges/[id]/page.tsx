@@ -25,6 +25,14 @@ export default function IndividualChallenge() {
   const [searchTerm, setSearchTerm] = useState("");
   const [position, setPosition] = useState("");
 
+  const ROLE_TAG_MAPPING: Record<string, string[]> = {
+    top: ["Fighter", "Tank"],
+    jungle: ["Assassin", "Fighter", "Tank"],
+    mid: ["Mage", "Assassin"],
+    adc: ["Marksman"],
+    support: ["Support", "Tank", "Mage"],
+  };
+
   const filteredChampions = champions.filter((champ) => {
     const matchesSearch = champ.name
       .toLowerCase()
@@ -33,8 +41,8 @@ export default function IndividualChallenge() {
     const matchesPosition =
       position === "all" || position === ""
         ? true
-        : champ.tags?.some(
-            (tag: string) => tag === position
+        : champ.tags?.some((tag) =>
+            ROLE_TAG_MAPPING[position]?.includes(tag)
           );
 
     return matchesSearch && matchesPosition;

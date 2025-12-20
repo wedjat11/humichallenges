@@ -59,11 +59,11 @@ export default function SearchComponent({
 }: SearchComponentProps) {
   const positions = [
     { value: "all", label: "All", icon: "/position_all_icon_1766208553958.png" },
-    { value: "Fighter", label: "Top", icon: "/position_top_icon_1766208487190.png" },
-    { value: "Assassin", label: "Jungle", icon: "/position_jungle_icon_1766208501182.png" },
-    { value: "Mage", label: "Mid", icon: "/position_mid_icon_1766208513804.png" },
-    { value: "Marksman", label: "ADC", icon: "/position_adc_icon_1766208526312.png" },
-    { value: "Support", label: "Support", icon: "/position_support_icon_1766208540617.png" },
+    { value: "top", label: "Top", icon: "/position_top_icon_1766208487190.png" },
+    { value: "jungle", label: "Jungle", icon: "/position_jungle_icon_1766208501182.png" },
+    { value: "mid", label: "Mid", icon: "/position_mid_icon_1766208513804.png" },
+    { value: "adc", label: "ADC", icon: "/position_adc_icon_1766208526312.png" },
+    { value: "support", label: "Support", icon: "/position_support_icon_1766208540617.png" },
   ];
 
   return (
